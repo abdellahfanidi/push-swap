@@ -1,77 +1,70 @@
 #include "push_swap.h" 
-
-void	ra(stack *a)
+//failed malloc 
+void	ra(t_stack *a)
 {
-	stack current;
-	int first;
+	t_node	*new;
 
-	first = current->data;
-	current = *a;
-	while (current && current->next)
-	{
-		current->data = current->next->data;
-		current = current->next;
-	}
-	 current->data = first;
-	 ft_putstr("ra\n");
+	new = (t_node *)malloc(sizeof(t_node));
+	new->data = (*a)->data;
+	new->next = NULL;
+	pop(a);
+	ft_lstadd_back(a, new);
+	
 }
 
-void	rb(stack *b)
+void	rb(t_stack *b)
 {
-	stack current;
-	int first;
+	t_node	*new;
 
-	first = current->data;
-	current = *b;
-	while (current && current->next)
-	{
-		current->data = current->next->data;
-		current = current->next;
-	}
-	 current->data = first;
-	 ft_putstr("rb\n");
+	new = (t_node *)malloc(sizeof(t_node));
+	new->data = (*b)->data;
+	new->next = NULL;
+	pop(b);
+	ft_lstadd_back(b, new);
+	
 }
 
-void rr(stack *a, stack *b)
+
+void rr(t_stack *a, t_stack *b)
 {
 	ra(a);
 	rb(b);
 	ft_putstr("rr\n");
 }
 
-void rra(stack *a)
+void rra(t_stack *a)
 {
-    stack current;
-	stack prev;
+    t_stack current;
+	t_stack prev;
 
 	current = *a;
 	while(current && current->next)
 	{
 		prev = current;
-		current->next;
+		current = current->next;
 	}
 	push(a, current->data);
 	free(current);
 	prev->next = NULL;
 } 
 
-void rrb(stack *b)
+void rrb(t_stack *b)
 {
-    stack current;
-	stack prev;
+    t_stack current;
+	t_stack prev;
 
 	current = *b;
 	while(current && current->next)
 	{
 		prev = current;
-		current->next;
+		current = current->next;
 	}
 	push(b, current->data);
 	free(current);
 	prev->next = NULL;
 }  
 
-void rrr(stack *a,stack *b)
+void rrr(t_stack *a,t_stack *b)
 {
 	rra(a);
 	rrb(b);

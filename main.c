@@ -2,27 +2,29 @@
 
 int	main(int ac, char **av)
 {
-	stack p;
+	t_stack p;
+	t_stack p1;
 	int check;
-
 	if (ac > 1)
 	{
 		error_int(ac, av);
 		duplicate(ac, av);
 	
 	push_all(&p, ac, av);
-	print_stack(p);
+	push_all(&p1, ac - 3, av);
+	write(1,"\nstack a :",10);print_stack(p);
+	write(1,"\nstack b :",10);print_stack(p1);
 	check = check_sorting(p);
 	if (check)
 	{
-        ft_putstr("ok\n");
+       // ft_putstr("ok\n");
         return (0);
     }
 	else
 	{
-        ft_putstr("ko\n");
-        sa(&p);
-        print_stack(p);
+        rr(&p,&p1);
+        write(1,"\nstack a :",10);print_stack(p);
+		write(1,"\nstack b :",10);;print_stack(p1);
     }
     }
 }

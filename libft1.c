@@ -24,14 +24,13 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-long	ft_atoi(const char *p,int *check)
+long	ft_atoi(const char *p)
 {
 	int	signe;
-	long	res;
+	int	res;
 
 	res = 0;
 	signe = 1;
-	*check = 0;
 	while (ft_isspace(*p))
 		p++;
 	if (*p == '+' || *p == '-')
@@ -40,24 +39,48 @@ long	ft_atoi(const char *p,int *check)
 			signe = -1;
 		p++;
 	}
-	if (!ft_isdigit(*p))
-	{
-		*check = 1;
-		printf("aywa");
-		return(0);
-	}
 	while (ft_isdigit(*p))
 	{
 		res = (10 * res) + *p - '0';
 		p++;
 	}
-	if (*p != NULL)
-	{
-		*check = 1;
-		return(0);
-	}
 	return (res * signe);
 }
+
+// long	ft_atoi(const char *p,int *check)
+// {
+// 	int	signe;
+// 	long	res;
+
+// 	res = 0;
+// 	signe = 1;
+// 	*check = 0;
+// 	while (ft_isspace(*p))
+// 		p++;
+// 	if (*p == '+' || *p == '-')
+// 	{
+// 		if (*p == '-')
+// 			signe = -1;
+// 		p++;
+// 	}
+// 	if (!ft_isdigit(*p))
+// 	{
+// 		*check = 1;
+// 		printf("aywa");
+// 		return(0);
+// 	}
+// 	while (ft_isdigit(*p))
+// 	{
+// 		res = (10 * res) + *p - '0';
+// 		p++;
+// 	}
+// 	if (*p != NULL)
+// 	{
+// 		*check = 1;
+// 		return(0);
+// 	}
+// 	return (res * signe);
+// }
 
 void	put(char *p, int i)
 {

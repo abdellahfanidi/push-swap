@@ -1,49 +1,66 @@
 #include "push_swap.h"
 
-void	sa(stack *a)
+void	sa(t_stack *a)
 {
+	t_stack current;
+	t_stack next;
 	int		d;
-
-	if (*a && (*a)->next)
+	current = *a;
+	while(current && current->next)
 	{
-		d = (*a)->data;
-		(*a)->data = (*a)->next->data;
-		(*a)->next->data = d;
+		next = current;
+		current = current->next;
+	}
+	
+	if (next && next->next)
+	{
+		d = next->data;
+		next->data = next->next->data;
+		next->next->data = d;
 	}
 
-	ft_putstr("sa\n");
 }
 
-void	sb(stack *b)
+void	sb(t_stack *b)
 {
+	t_stack current;
+	t_stack next;
 	int		d;
-
-	if (*b && (*b)->next)
+	current = *b;
+	while(current && current->next)
 	{
-		d = (*b)->data;
-		(*b)->data = (*b)->next->data;
-		(*b)->next->data = d;
+		next = current;
+		current = current->next;
+	}
+	
+	if (next && next->next)
+	{
+		d = next->data;
+		next->data = next->next->data;
+		next->next->data = d;
 	}
 
-	ft_putstr("sb\n");
 }
 
-void	ss(stack *a, stack *b)
+void	ss(t_stack *a, t_stack *b)
 {
 	sa(a);
 	sb(b);
 	ft_putstr("ss\n");
 }
 
-void	pa(stack *a, stack b)
+void	pa(t_stack *a, t_stack *b)
 {
-	push(a, b->data);
-	ft_putstr("pa\n");
+	push(a, (*b)->data);
+	pop(b);
+	ft_putstr("\npa");
 }
 
-void	pb(stack a, stack *b)
+void	pb(t_stack *a, t_stack *b)
 {
-	push(b, a->data);
-	ft_putstr("pb\n");
+	push(b, (*a)->data);
+	pop(a);
+	ft_putstr("\npb");
 }
+
 

@@ -1,13 +1,13 @@
 #include "push_swap.h"
 
-// int	isEmpty(stack p)
-// {
-// 	return (p == NULL);
-// }
-
-void	pop(stack *p)
+int	isEmpty(t_stack p)
 {
-		Node *temp;
+	return (p == NULL);
+}
+
+void	pop(t_stack *p)
+{
+		t_node *temp;
 
 	if (isEmpty(*p))
 		ft_putstr("error");
@@ -19,7 +19,7 @@ void	pop(stack *p)
 	}
 }
 
-// int	top(stack p)
+// int	top(t_stack p)
 // {
 // 	if (isEmpty(p))
 // 		ft_putstr("error");
@@ -27,48 +27,75 @@ void	pop(stack *p)
 // 		return (p->data);
 // }
 
-void	push(stack *p, int x)
+void	push(t_stack *p, int x)
 {
-	Node	*new;
+	t_node	*new;
 
-	new = (Node *)malloc(sizeof(Node));
+	new = (t_node *)malloc(sizeof(t_node));
 	new->data = x;
 	new->next = *p;
 	*p = new;
 }
+void	ft_lstadd_back(t_stack *lst,t_node *new)
+{
+	t_stack p;
 
-void	push_all(stack *p, int ac, char **av)
+	p = *lst;
+	if (new != NULL)
+	{
+		if (*lst == NULL)
+			*lst = new;
+		else
+		{
+			while (p->next)
+				p = p->next;
+			p->next = new;
+		}
+	}
+}
+
+void	push_all(t_stack *p, int ac, char **av)
 {
 	int	i;
 	int	num;
 
-	i = 1;
-	while (i < ac)
+	i = ac - 1;
+	while (i >= 1)
 	{
 		num = atoi(av[i]);
 		push(p, num);
-		i++;
+		i--;
 	}
 }
 
-void	print_stack(stack p)
+// void	print_stack1(t_stack p)
+// {
+// 	if (p->next)
+// 		print_stack(p->next);
+// 	ft_putnbr(p->data);
+// 	ft_putstr(" ");
+// }
+
+void print_stack(t_stack p)
 {
-	if (p->next)
-		print_stack(p->next);
-	ft_putnbr(p->data);
-	ft_putstr(" ");
+	while(p)
+	{
+		ft_putnbr(p->data);
+		ft_putstr(" ");
+		p = p->next;
+	}
 }
 
-int	check_sorting(stack p)
+int	check_sorting(t_stack p)
 {
-	stack temp;
+	t_stack temp;
 
 	while (p)
 	{
 		temp = p->next;
 		while (temp)
 		{
-			if (p->data < temp->data)
+			if (p->data > temp->data)
 				return (0);
 			temp = temp->next;
 		}
