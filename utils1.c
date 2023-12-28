@@ -2,44 +2,29 @@
 
 void	sa(t_stack *a)
 {
-	t_stack current;
-	t_stack next;
-	int		d;
-	current = *a;
-	while(current && current->next)
-	{
-		next = current;
-		current = current->next;
-	}
-	
-	if (next && next->next)
-	{
-		d = next->data;
-		next->data = next->next->data;
-		next->next->data = d;
-	}
+	int data1;
+	int data2;
 
+	data1 = (*a)->data;
+	data2 = (*a)->next->data;
+	pop(a);
+	pop(a);
+	push(a,data1);
+	push(a,data2);
+	ft_putstr("sa\n");
 }
 
 void	sb(t_stack *b)
 {
-	t_stack current;
-	t_stack next;
-	int		d;
-	current = *b;
-	while(current && current->next)
-	{
-		next = current;
-		current = current->next;
-	}
-	
-	if (next && next->next)
-	{
-		d = next->data;
-		next->data = next->next->data;
-		next->next->data = d;
-	}
+	int data1;
+	int data2;
 
+	data1 = (*b)->data;
+	data2 = (*b)->next->data;
+	pop(b);
+	pop(b);
+	push(b,data1);
+	push(b,data2);
 }
 
 void	ss(t_stack *a, t_stack *b)

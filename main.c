@@ -3,7 +3,7 @@
 int	main(int ac, char **av)
 {
 	t_stack p;
-	t_stack p1;
+	//t_stack p1;
 	int check;
 	if (ac > 1)
 	{
@@ -11,20 +11,21 @@ int	main(int ac, char **av)
 		duplicate(ac, av);
 	
 	push_all(&p, ac, av);
-	push_all(&p1, ac - 3, av);
+	//push_all(&p1, ac - 3, av);
 	write(1,"\nstack a :",10);print_stack(p);
-	write(1,"\nstack b :",10);print_stack(p1);
+	//write(1,"\nstack b :",10);print_stack(p1);
 	check = check_sorting(p);
 	if (check)
 	{
-       // ft_putstr("ok\n");
+        ft_putstr("ok\n");
         return (0);
     }
 	else
 	{
-        rr(&p,&p1);
+		printf("\n");
+        solve_iii(&p);
         write(1,"\nstack a :",10);print_stack(p);
-		write(1,"\nstack b :",10);;print_stack(p1);
+		//write(1,"\nstack b :",10);;print_stack(p1);
     }
     }
 }

@@ -1,5 +1,6 @@
-#include "push_swap.h" 
-//failed malloc 
+#include "push_swap.h"
+
+//failed malloc
 void	ra(t_stack *a)
 {
 	t_node	*new;
@@ -9,7 +10,7 @@ void	ra(t_stack *a)
 	new->next = NULL;
 	pop(a);
 	ft_lstadd_back(a, new);
-	
+	ft_putstr("ra\n");
 }
 
 void	rb(t_stack *b)
@@ -21,24 +22,22 @@ void	rb(t_stack *b)
 	new->next = NULL;
 	pop(b);
 	ft_lstadd_back(b, new);
-	
 }
 
-
-void rr(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b)
 {
 	ra(a);
 	rb(b);
 	ft_putstr("rr\n");
 }
 
-void rra(t_stack *a)
+void	rra(t_stack *a)
 {
-    t_stack current;
-	t_stack prev;
+	t_stack	current;
+	t_stack	prev;
 
 	current = *a;
-	while(current && current->next)
+	while (current && current->next)
 	{
 		prev = current;
 		current = current->next;
@@ -46,15 +45,16 @@ void rra(t_stack *a)
 	push(a, current->data);
 	free(current);
 	prev->next = NULL;
-} 
+	ft_putstr("rra\n");
+}
 
-void rrb(t_stack *b)
+void	rrb(t_stack *b)
 {
-    t_stack current;
-	t_stack prev;
+	t_stack	current;
+	t_stack	prev;
 
 	current = *b;
-	while(current && current->next)
+	while (current && current->next)
 	{
 		prev = current;
 		current = current->next;
@@ -62,13 +62,11 @@ void rrb(t_stack *b)
 	push(b, current->data);
 	free(current);
 	prev->next = NULL;
-}  
+}
 
-void rrr(t_stack *a,t_stack *b)
+void	rrr(t_stack *a, t_stack *b)
 {
 	rra(a);
 	rrb(b);
 	ft_putstr("rrr\n");
 }
-
-
