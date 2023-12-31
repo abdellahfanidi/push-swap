@@ -38,9 +38,7 @@ void	solve_iii(t_stack *a)
 	}
 	if ((*a)->data > current->data && current->data > current->next->data)
 	{
-		sa(a);
-		ra(a);
-		ra(a);
+		ra(a);sa(a);
 		return ;
 	}
 	check_iii(a);

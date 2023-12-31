@@ -27,12 +27,13 @@ void	pop(t_stack *p)
 // 		return (p->data);
 // }
 
-void	push(t_stack *p, int x)
+void	push(t_stack *p, int x,int pos)
 {
 	t_node	*new;
 
 	new = (t_node *)malloc(sizeof(t_node));
 	new->data = x;
+	new->position = pos;
 	new->next = *p;
 	*p = new;
 }
@@ -63,7 +64,7 @@ void	push_all(t_stack *p, int ac, char **av)
 	while (i >= 1)
 	{
 		num = atoi(av[i]);
-		push(p, num);
+		push(p, num,-1);
 		i--;
 	}
 }
@@ -81,25 +82,11 @@ void print_stack(t_stack p)
 	while(p)
 	{
 		ft_putnbr(p->data);
-		ft_putstr(" ");
+		ft_putstr(" (");
+
+		ft_putnbr(p->position);
+		ft_putstr(")  ");
 		p = p->next;
 	}
 }
 
-int	check_sorting(t_stack p)
-{
-	t_stack temp;
-
-	while (p)
-	{
-		temp = p->next;
-		while (temp)
-		{
-			if (p->data > temp->data)
-				return (0);
-			temp = temp->next;
-		}
-		p = p->next;
-	}
-	return (1);
-}

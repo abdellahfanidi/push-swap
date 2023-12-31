@@ -7,10 +7,11 @@ void	ra(t_stack *a)
 
 	new = (t_node *)malloc(sizeof(t_node));
 	new->data = (*a)->data;
+	new->position = (*a)->position;
 	new->next = NULL;
 	pop(a);
 	ft_lstadd_back(a, new);
-	ft_putstr("ra\n");
+	ft_putstr("\nra");
 }
 
 void	rb(t_stack *b)
@@ -19,6 +20,7 @@ void	rb(t_stack *b)
 
 	new = (t_node *)malloc(sizeof(t_node));
 	new->data = (*b)->data;
+	new->position = (*b)->position;
 	new->next = NULL;
 	pop(b);
 	ft_lstadd_back(b, new);
@@ -42,7 +44,7 @@ void	rra(t_stack *a)
 		prev = current;
 		current = current->next;
 	}
-	push(a, current->data);
+	push(a, current->data,current->position);
 	free(current);
 	prev->next = NULL;
 	ft_putstr("rra\n");
@@ -59,7 +61,7 @@ void	rrb(t_stack *b)
 		prev = current;
 		current = current->next;
 	}
-	push(b, current->data);
+	push(b, current->data,current->position);
 	free(current);
 	prev->next = NULL;
 }

@@ -8,6 +8,7 @@
 typedef struct t_node
 {
 	int				data;
+	int				position;
 	struct t_node	*next;
 }					t_node;
 
@@ -22,13 +23,18 @@ void				ft_putnbr(int nb);
 void				error_int(int ac, char **av);
 void				duplicate(int ac, char **av);
 
-void				push(t_stack *p, int x);
+void				push(t_stack *p, int x, int pos);
 void				pop(t_stack *p);
+int					ft_lstsize(t_stack lst);
 void				ft_lstadd_back(t_stack *lst, t_node *new);
 void				push_all(t_stack *p, int ac, char **av);
 void				print_stack(t_stack p);
 int					check_sorting(t_stack p);
-void solve_iii(t_stack *a);
+void				solve_iii(t_stack *a);
+void				solve_n(t_stack *a, t_stack *b);
+int					get_target_top(t_stack *p, int pos);
+int get_target_top1(t_stack p, int pos);
+
 void				sa(t_stack *p);
 void				sb(t_stack *pb);
 void				ss(t_stack *a, t_stack *b);
